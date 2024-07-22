@@ -4,9 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { Blob } from 'fetch-blob'
 
-const API_KEY =
-  process.env.NEXT_PUBLIC_API_KEY ||
-  'eyJfcmFpbHMiOnsiZGF0YSI6WzFdLCJwdXIiOiJBcHBcbmFwaV9rZXlcbiJ9fQ==--03fe21b5778a05d2831e59083a5acc6f16bfbe95'
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 
 const fileNames = [
   '/images/my.jpg',
@@ -56,6 +54,8 @@ async function getData() {
         json: await res.json(),
       }
 
+      console.log({ result: result.json })
+
       return result
     })
   )
@@ -63,6 +63,8 @@ async function getData() {
 
 export default async function Page() {
   const imageResponses = await getData()
+
+  console.log({ imageResponses })
 
   return (
     <div className="grid grid-cols-4">
