@@ -5,6 +5,7 @@ import path from 'path'
 import { Blob } from 'fetch-blob'
 
 const API_KEY =
+  process.env.NEXT_PUBLIC_API_KEY ||
   'eyJfcmFpbHMiOnsiZGF0YSI6WzFdLCJwdXIiOiJBcHBcbmFwaV9rZXlcbiJ9fQ==--03fe21b5778a05d2831e59083a5acc6f16bfbe95'
 
 const fileNames = [
@@ -45,7 +46,7 @@ async function getData() {
       formdata.append('analysis[file]', imageBlob, fileName)
       formdata.append('analysis[thumb_hash_data_url_enabled]', '1')
 
-      const res = await fetch('http://localhost:3000/api/v1/image_analysis', {
+      const res = await fetch('https://solidimage.dev/api/v1/image_analysis', {
         method: 'POST',
         body: formdata,
       })
