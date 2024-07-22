@@ -40,7 +40,7 @@ async function getData() {
 
       // Construct the payload
       const formdata = new FormData()
-      formdata.append('api_key', API_KEY)
+      formdata.append('api_key', API_KEY!)
       formdata.append('analysis[file]', imageBlob, fileName)
       formdata.append('analysis[thumb_hash_data_url_enabled]', '1')
 
